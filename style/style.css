@@ -103,12 +103,16 @@ input {
     line-height: 120%;    
 }
 
-
 .btn_outline{
     background:   linear-gradient(to right, white, white) padding-box, var(--g-red) border-box;
     border-radius: 8px;
-    border: 1.5px solid transparent;  
-    
+    border: 1.5px solid transparent;      
+}
+
+.input_dashed{   
+    border-radius: 8px;
+    border: 1.5px solid rgb(80, 12, 12);  
+    border-style: dashed;
 }
 
 img{
@@ -150,8 +154,9 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    column-gap: 3rem;
+    gap: 1rem 3rem;
     padding: 1rem 2.5rem; 
+    flex-wrap: wrap;
 }
 
 .search_box{
@@ -168,6 +173,10 @@ header{
 
 .icon{
     flex-shrink: 0;
+}
+
+header .btn_box{
+    margin-left: auto;    
 }
 
 .btn_box{
@@ -188,30 +197,87 @@ header{
 }
 
 video{
+    content: " ";
     cursor: pointer;
     border-radius: 4px;
 }
 
-.close_modal::after{
-    width: 10px;
-    height: 2px;
+.close_modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: scale(2) translate(-1rem, .75rem);
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: 55;
+    backdrop-filter: brightness(0.5) blur(7px);
 }
 
 .modal{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 98%;
+    width: calc(100% - 2rem);
     max-width: 550px;
-    background-color: #651E55;
-    z-index: 100;
-    height: 700px;
+    background-color: white;
+    z-index: 100;    
+    box-shadow: 0px 0px 4px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    gap: 1rem;
 }
 
-.close_modal::before{
-    width: 10px;
-    height: 2px;
+.add_video{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 40px;
+}
+
+.input_file{
+    cursor: pointer;
+}
+
+.modal form, .add_video form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.input{
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 8px;
+    padding: 6px 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 120%;    
+}
+
+.logo{
+    flex-shrink: 0;
+}
+
+.input_outline{
+    background:   linear-gradient(to right, white, white) padding-box, var(--g-red) border-box;
+    border-radius: 8px;
+    border: 1.5px solid transparent;  
 }
 
 .flex{
@@ -254,9 +320,106 @@ justify-content: space-between;
     justify-self: center;
 }
 
+.description_chanel{
+    display: flex;
+    gap: 1rem 6rem;
+    padding-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.description_chanel .description{
+    max-width: 40rem;
+    width: auto;
+    min-width: 20rem;
+}
+
+.description_chanel .headling{
+    display: flex;
+    flex-direction: column;
+    column-gap: .25rem;
+}
+
+.views_box{
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr max-content;
+}
+
+.views_box .video_box{
+    max-height: calc(100vh - 90px);
+    overflow-y: scroll;
+}
+
+.views_box .video_box::-webkit-scrollbar{
+    width: 0px;
+}
+
+.views_box video{
+    width: 100%;
+}
+
+.views_box .update{
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid #8b8b8b;
+    border-top: 1px solid #8b8b8b;
+    padding: 21px 0;
+    flex-wrap: wrap;
+}
+
+.views_box .description{
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;    
+    align-items: flex-start;
+}
+
+
+.views_box .description img{
+    width: 50px; 
+    height: auto;
+    flex-shrink: 0;
+}
+
+.views_box .description .text{
+   max-width: 40rem;
+}
+
+.views_box .update form{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.views_headling{
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.views_headling img{
+    display: flex;    
+}
+
+.views_headling .h2{
+    margin-right: auto;    
+}
+
+@media screen and (max-width:989px) {
+    .views_box{        
+        grid-template-columns: 1fr ;
+    }
+}
+
 @media screen and (max-width:649px) {
     header{
         flex-direction: column;
         gap: 16px;
     }
+    header .btn_box{
+        margin: auto;    
+    }
+
+    
 }
