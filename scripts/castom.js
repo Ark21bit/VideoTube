@@ -1,5 +1,3 @@
-/* $("video").click(function (e) { 
-    $("video").pause();
-    $(this).play();
-    
+/* $(".video").click(function (e) {     
+    $(this).play();    
 }); */
